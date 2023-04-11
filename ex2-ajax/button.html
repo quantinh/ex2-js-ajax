@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>AJAX GET</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Sự kiện click vào nút Submit thì thực hiện xử lý trả dữ liệu về theo phương thức Get
+			$('#process').click(function() {
+				$.ajax({
+					url		    : 'https://api.themoviedb.org/3/movie/700/lists?api_key=92b2df3080b91d92b31eacb015fc5497&language=en-US&page=1', // Tạo đường dẫn đến file xử lý
+					type		: 'GET', // Gửi dữ liệu đi và nhận dữ liệu về theo phương thức POST
+					timeout     : 3000, // 3s Thời gian tại trang trả dữ liệu về tối đa 3s nếu đk sẽ lỗi
+					success     : function(data, status) {
+						console.log(JSON.stringify(data));
+						console.log(status);
+					}
+				})
+			
+			});
+		});
+	</script>
+    <body>
+        <div class="list">  
+			<input type="button" class="button" name="process" id="process" value ="Process"/>
+		</div>
+    </body>
+</html>

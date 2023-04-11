@@ -1,0 +1,50 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Bootstrap CSS -->
+            <link href="assets/bootstrap/bootstrap-4/css/bootstrap.min.css"
+                rel="stylesheet">
+            <!-- JQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="assets/bootstrap/bootstrap-4/js/jquery-3.2.1.slim.min.js"></script>
+            <script src="assets/bootstrap/bootstrap-4/js/popper.min.js"></script>
+            <script src="assets/bootstrap/bootstrap-4/js/bootstrap.min.js"></script>
+            <title>Exe-2:Javascipt</title>
+        </head>
+        <body>
+            <div class="wrapper m-4">
+                <form onsubmit="submitForm(event)" style="width: 400px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label for="string" class="font-weight-bold">TITLE: REQUIRE ALPHABETS + NUMBER</label>
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            id="string"
+                            placeholder="vui lòng nhập các kí tự từ a-z bao gồm cả số"
+                            required
+                        />
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                </form>
+                <div class="wp-result" style="width: 400px; margin: 0 auto; font-weight: 600;">
+                    <h5>Kết quả:</h5>
+                    <p id="result" class="text-success"></p>
+                    <p id="error" class="text-danger"></p>
+                </div>  
+            </div>
+        </body>
+        <script>
+            function submitForm(event) {
+                event.preventDefault();
+                var regex = /^[A-Za-z0-9]*([A-Za-z][0-9]|[0-9][A-Za-z])[A-Za-z0-9]*$/i;
+                var element = document.getElementById('string');
+                if (element.value.match(regex)) {
+                    var elementResult = document.getElementById('result').innerHTML = `${element.value}`;
+                } else {
+                    var elementError = document.getElementById('error').innerHTML = `Bạn vui lòng nhập đúng định dạng !`;
+                }
+            }
+        </script>
+    </html>
